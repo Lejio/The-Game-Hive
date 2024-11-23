@@ -8,9 +8,6 @@ type TwitchToken = {
 }
 
 export async function GET(req: NextRequest) {
-
-    console.log(process.env.TWITCH_CLIENT_ID);
-    console.log(process.env.TWITCH_CLIENT_SECRET);
     
     const res = await fetch("https://id.twitch.tv/oauth2/token", {
         method: "POST",

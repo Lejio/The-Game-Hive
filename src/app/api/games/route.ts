@@ -14,5 +14,22 @@ const getToken = async () => {
 export async function GET(req: NextRequest) {
 
     const token = await getToken();
-    return NextResponse.json({ token: token });
+
+    const res = await fetch('https://api.igdb.com/v4/games', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Client-ID': process.env.TWITCH_CLIENT_ID as string,
+            'Authorization': `Bearer ${token}`,
+        },
+        body: 'fields name, rating, storyline;'
+    })
+    .then(response => {
+        return response.json();
+    })
+    .catch(err => {
+        console.error(err);
+    });
+
+    return NextResponse.json(res);
 }

@@ -1,6 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
+import redis from "@/lib/redis";
 
-export async function POST(req: NextRequest) {
+type TwitchToken = {
+    access_token: string;
+    expires_in: number;
+    token_type: string;
+}
+
+export async function GET(req: NextRequest) {
 
     console.log(process.env.TWITCH_CLIENT_ID);
     console.log(process.env.TWITCH_CLIENT_SECRET);
@@ -17,6 +24,7 @@ export async function POST(req: NextRequest) {
         }),
     })
     
-    const data = await res.json();
+    const data: TwitchToken = await res.json();
+    redis.set("igdb_access_token", data.access_token);
     return NextResponse.json(data);
 }

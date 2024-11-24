@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
 
 import { cn } from "@/lib/utils"
@@ -14,6 +15,8 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
+import { createClient } from "@/lib/supabase/client";
+import { type User } from "@supabase/supabase-js"
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -54,6 +57,19 @@ const components: { title: string; href: string; description: string }[] = [
 ]
 
 export function NavMenu() {
+
+  const [user, setUser] = useState<User | null>(null)
+
+  useEffect(() => {
+    const getUser = async () => {
+      const supabase = createClient();
+      const { data, error } = await supabase.auth.getUser();
+      setUser(data.user);
+    }
+    getUser();
+  }, [])
+
+  console.log(user);
   return (
     <NavigationMenu>
       <NavigationMenuList>

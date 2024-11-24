@@ -8,7 +8,6 @@ import Popular from "./Popular";
 export default function Home() {
 
 
-
   return (
     <div className=" h-[100vh] w-[100vw] flex flex-col justify-between">
       <nav className=" w-full flex justify-between align-middle mt-5 px-5">

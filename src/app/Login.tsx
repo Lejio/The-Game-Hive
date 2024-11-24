@@ -1,10 +1,10 @@
 'use client'
-import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 import { FaGoogle } from "react-icons/fa";
-
+import { useEffect, useState } from "react"
+import { createClient } from "@/lib/supabase/client";
+import { type User } from "@supabase/supabase-js"
 
 async function signInWithGoogle() {
   const supabase = createClient();
@@ -22,13 +22,33 @@ export default function Login() {
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
 
+  const [user, setUser] = useState<User | null>(null)
+
+  useEffect(() => {
+    const getUser = async () => {
+      const supabase = createClient();
+      const { data, error } = await supabase.auth.getUser();
+      setUser(data.user);
+    }
+    getUser();
+  }, [])
+
+  async function signOut() {
+    const supabase = createClient();
+    const { error } = await supabase.auth.signOut();
+    if (error) console.error("Sign out error", error.message);
+    window.location.reload();
+  }
+
+  console.log(user);
+
   return (
     <div className="flex items-center justify-center">
       {/* Button to Open Modal */}
       <Button
-        onClick={openModal}
+        onClick={user? signOut : openModal}
       >
-        Login
+        {user? "Sign Out" : "Login"}
       </Button>
 
       {/* Modal with Framer Motion */}

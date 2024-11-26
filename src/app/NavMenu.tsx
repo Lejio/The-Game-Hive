@@ -18,36 +18,36 @@ import {
 const components: { title: string; href: string; description: string }[] = [
   {
     title: "Video Games",
-    href: "/docs/primitives/alert-dialog",
+    href: "/games",
     description:
       "Database of all video games.",
   },
   {
     title: "Publishers",
-    href: "/docs/primitives/hover-card",
+    href: "/publishers",
     description:
       "List of all registered publishers.",
   },
   {
     title: "Calendar",
-    href: "/docs/primitives/progress",
+    href: "/calendar",
     description:
       "Displays a calendar of all upcoming titles, dlcs and events.",
   },
   {
     title: "Recommendations",
-    href: "/docs/primitives/scroll-area",
+    href: "/recommendations",
     description: "Don't know what to play? Let us recommend you a game.",
   },
   {
     title: "Genres",
-    href: "/docs/primitives/tabs",
+    href: "/genres",
     description:
       "List all genres.",
   },
   {
     title: "Platforms",
-    href: "/docs/primitives/tooltip",
+    href: "/platforms",
     description:
       "List of all currently tracked platforms.",
   },
@@ -79,13 +79,13 @@ export function NavMenu() {
                     </a>
                     </NavigationMenuLink>
                 </li>
-                <ListItem href="/docs" title="Forum">
+                <ListItem href="/forum" title="Forum">
                     Chat with other gamers.
                 </ListItem>
-                <ListItem href="/docs/installation" title="How it works">
+                <ListItem href="/how-it-works" title="How it works">
                     How does the recommendation engine work?
                 </ListItem>
-                <ListItem href="/docs/primitives/typography" title="Development">
+                <ListItem href="/dev" title="Development">
                     See the development process.
                 </ListItem>
                 </ul>

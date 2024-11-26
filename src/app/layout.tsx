@@ -1,3 +1,7 @@
+import { FaGamepad } from "react-icons/fa";;
+import { NavMenu } from "@/app/NavMenu";
+import Login from "@/app/Login";
+
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -22,6 +26,11 @@ export default function RootLayout({
       <body
         className={`${montserrat.className} antialiased`}
       >
+        <nav className=" w-full flex justify-between align-middle mt-5 px-5">
+          <FaGamepad className=" w-10 h-10" />
+          <NavMenu />
+          <Login />
+        </nav>
         {children}
       </body>
     </html>

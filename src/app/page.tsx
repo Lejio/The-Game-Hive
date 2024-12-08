@@ -1,6 +1,6 @@
 import Hero from "@/app/Hero";
 import Popular from "./Popular";
-import Filter from "./forum/Fitler";
+// import Filter from "./forum/Fitler";
 
 export default function Home() {
 
@@ -12,7 +12,7 @@ export default function Home() {
           <Hero />
         </div>
         <div className=" flex flex-row m-5 gap-5">
-          <Filter />
+          {/* <Filter /> */}
           <Popular />
         </div>
       </main>

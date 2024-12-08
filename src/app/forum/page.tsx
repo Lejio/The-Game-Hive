@@ -1,5 +1,5 @@
 import React from 'react'
-import Filter from './Fitler'
+import Filter from "@/app/Fitler";
 import Posts from './Posts'
 
 export default function page() {

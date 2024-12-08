@@ -4,7 +4,7 @@ import redis from "@/lib/redis";
 const getToken = async () => {
     const cachedToken = await redis.get("igdb_access_token");
     if (!cachedToken) {
-        const req = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/auth`)
+        const req = await fetch(`/api/auth`)
         const data = await req.json()
         return data.access_token
     }

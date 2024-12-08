@@ -37,7 +37,8 @@ export async function GET() {
     const game_ids = await getPopular(token);
     const game_information = [];
     for (let i = 0; i < game_ids.length; i++) {
-        game_information.push(await fetch(`${process.env.BASE_URL}/api/get-game`, {
+        await sleep(500);
+        game_information.push(await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/get-game`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -51,4 +52,8 @@ export async function GET() {
     console.log(game_information);
 
     return NextResponse.json(game_information);
+}
+
+function sleep(ms: number): Promise<void> {
+    return new Promise((resolve) => setTimeout(resolve, ms));
 }

@@ -8,7 +8,7 @@ export default function PostForm() {
     tags: "",
     postContent: "",
   });
-
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleInputChange = (e: { target: { name: any; value: any; }; }) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });

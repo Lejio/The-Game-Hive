@@ -1,10 +1,10 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import redis from "@/lib/redis";
 
 const getToken = async () => {
     const cachedToken = await redis.get("igdb_access_token");
     if (!cachedToken) {
-        const req = await fetch(`${process.env.BASE_URL}/api/auth`)
+        const req = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/auth`)
         const data = await req.json()
         return data.access_token
     }
@@ -31,7 +31,7 @@ const getGenres = async (token: string) => {
     return res;
 }
 
-export async function GET(req: NextRequest) {
+export async function GET() {
 
     const token = await getToken();
     let genres = await getGenres(token);

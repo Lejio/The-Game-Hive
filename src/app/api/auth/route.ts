@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import redis from "@/lib/redis";
 
 type TwitchToken = {
@@ -7,7 +7,7 @@ type TwitchToken = {
     token_type: string;
 }
 
-export async function GET(req: NextRequest) {
+export async function GET() {
     
     const res = await fetch("https://id.twitch.tv/oauth2/token", {
         method: "POST",

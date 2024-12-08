@@ -14,6 +14,7 @@ async function signInWithGoogle() {
       redirectTo: "http://localhost:3000/api/auth/callback",
     },
   });
+  console.log(data, error);
 }
 
 export default function Login() {
@@ -27,6 +28,7 @@ export default function Login() {
   useEffect(() => {
     const getUser = async () => {
       const supabase = createClient();
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { data, error } = await supabase.auth.getUser();
       setUser(data.user);
     }

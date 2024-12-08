@@ -6,7 +6,6 @@ import {
   CardContent,
   CardFooter,
 } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import React from "react";
 
 export default function page() {
@@ -22,7 +21,7 @@ export default function page() {
             Pokemon Sword and Shield
           </h2>
           <p>
-            Why You'll Like It: Exploration: Like Breath of the Wild, it offers
+            Why You&apos;ll Like It: Exploration: Like Breath of the Wild, it offers
             a vast, interconnected world filled with secrets, lore, and
             beautiful art design.
             <br /><br />
@@ -30,7 +29,7 @@ export default function page() {
             combat requires precision and timing, offering a rewarding
             experience.
             <br /><br />
-            Progression: Similar to Pokémon, you'll acquire abilities and
+            Progression: Similar to Pokémon, you&apos;ll acquire abilities and
             upgrades that allow you to explore more of the map and grow
             stronger.
           </p><br />

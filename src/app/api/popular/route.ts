@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import redis from "@/lib/redis";
 
 const getToken = async () => {
@@ -31,11 +31,11 @@ const getPopular = async (token: string) => {
     return res;
 }
 
-export async function GET(req: NextRequest) {
+export async function GET() {
 
     const token = await getToken();
-    let game_ids = await getPopular(token);
-    let game_information = [];
+    const game_ids = await getPopular(token);
+    const game_information = [];
     for (let i = 0; i < game_ids.length; i++) {
         game_information.push(await fetch(`${process.env.BASE_URL}/api/get-game`, {
             method: 'POST',

@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from "next/server"
+import { NextResponse } from "next/server"
 import mongodb from "@/lib/mongodb"
 
-export async function GET(req: NextRequest) {
+export async function GET() {
     const client = await mongodb;
     const db = client.db("the-game-hive");
     const posts = db.collection("posts");

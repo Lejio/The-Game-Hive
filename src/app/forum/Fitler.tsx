@@ -2,7 +2,6 @@ import React from "react";
 import { Separator } from "@/components/ui/separator";
 import { Label } from "@/components/ui/label";
 import { type Genre } from "@/types/genre";
-import Link from "next/link";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
   Card,
@@ -14,7 +13,7 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 
 export default async function Fitler() {
-  const response = await fetch("http://localhost:3000/api/genres");
+  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/genres`);
   const genres: Genre[] = await response.json();
 
   const extraFilters = [
@@ -114,8 +113,8 @@ export default async function Fitler() {
           </RadioGroup>
           <Separator orientation="horizontal" />
           <div className=" flex flex-col gap-2">
-            {genres.map((genre) => (
-              <div className="flex items-center space-x-2">
+            {genres.map((genre, index) => (
+              <div key={index} className="flex items-center space-x-2">
                 <Checkbox id={genre.slug} />
                 <label
                   htmlFor={genre.slug}
@@ -127,12 +126,12 @@ export default async function Fitler() {
             ))}
           </div>
           <Separator orientation="horizontal" />
-          {extraFilters.map((filter) => (
-            <div className=" flex flex-col gap-5">
+          {extraFilters.map((filter, index) => (
+            <div key={index} className=" flex flex-col gap-5">
               <div className="flex flex-col gap-2">
                 <p className="font-medium">{filter.name}</p>
-                {filter.options.map((option) => (
-                  <div className="flex items-center space-x-2">
+                {filter.options.map((option, idx) => (
+                  <div key={idx} className="flex items-center space-x-2">
                     <Checkbox id={option} />
                     <label
                       htmlFor={option}

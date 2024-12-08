@@ -4,7 +4,7 @@ import redis from "@/lib/redis";
 const getToken = async () => {
     const cachedToken = await redis.get("igdb_access_token");
     if (!cachedToken) {
-        const req = await fetch(`${process.env.BASE_URL}/api/auth`)
+        const req = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/auth`)
         const data = await req.json()
         return data.access_token
     }
@@ -43,7 +43,7 @@ const getGameById = async (gameId: number, token: string) => {
 export async function POST(req: NextRequest) {
     const { game_id } = await req.json();
     const token = await getToken();
-    let game_ids = await getGameById(game_id, token);
+    const game_ids = await getGameById(game_id, token);
 
     return NextResponse.json(game_ids);
 }

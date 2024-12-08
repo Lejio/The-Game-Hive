@@ -1,5 +1,4 @@
 import Hero from "@/app/Hero";
-import GenreBar from "./GenreBar";
 import Popular from "./Popular";
 import Filter from "./forum/Fitler";
 
